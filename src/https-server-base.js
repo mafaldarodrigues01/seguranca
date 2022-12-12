@@ -20,12 +20,13 @@ app.get("/", function (req, res) {
 });
 
 
+
 // configure TLS handshake
 const options = {
-    //key: fs.readFileSync('<server private key PEM>'),
-    //cert: fs.readFileSync('<server certificate PEM>'),
+   // key: fs.readFileSync('secure-server.pfx'),
+    cert: fs.readFileSync('secure-server.pem'),//('CA1-int.pem'),
     //ca: fs.readFileSync('<server trustbase PEM (root CA)>'), 
-    //requestCert: true, 
+    requestCert: true
     //rejectUnauthorized: true
 };
 
