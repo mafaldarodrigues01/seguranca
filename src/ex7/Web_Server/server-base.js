@@ -8,7 +8,7 @@ const service = require('./server-service')
 
 /* ********************************************** App setup ********************************************** */
 
-const port = 3001
+const PORT = 3001
 
 //Express instance
 const app = express()
@@ -38,9 +38,9 @@ passport.deserializeUser((userId, done) => {
 app.use('/', routes)
 
 
-app.listen(port, (err) => {
+app.listen(PORT, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
-    console.log(`server is listening on ${port}`)
+    console.log(`server is listening on ${PORT}`)
 })
