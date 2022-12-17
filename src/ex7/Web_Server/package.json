@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "node server-base.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "casbin": "^5.15.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.6.0",
+    "request": "^2.88.2"
+  }
+}

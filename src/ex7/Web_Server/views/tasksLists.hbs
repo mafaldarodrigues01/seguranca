@@ -1,0 +1,20 @@
+<h1 class="ui inverted header">
+    Tasks Lists
+</h1>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Tasks Lists</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each items}}
+        <tr>
+            <td data-label="Tasks List">
+                <a href="/tasks-lists/{{this.id}}/tasks">{{this.title}}</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>

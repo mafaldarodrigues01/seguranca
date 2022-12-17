@@ -1,0 +1,26 @@
+<h1 class="ui inverted header">
+    List Tasks
+</h1>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Tasks</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td data-label="Tasks">
+                <a href="/tasks-lists/{{@root.listId}}/tasks/{{this.id}}">{{this.title}}</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<form method="post">
+    <div class="ui action input">
+        <input type="text" placeholder="Task title" name="title">
+        <button class="ui positive button" type="submit">Add Task</button>
+    </div>
+</form>
+</div>
