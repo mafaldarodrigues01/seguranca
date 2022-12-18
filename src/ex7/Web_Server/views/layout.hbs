@@ -46,9 +46,6 @@
             font-size: 20px;
             color: #fff;
             cursor: pointer;
-            /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
-            /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
-            /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
             background: #000;
             transition: all 0.3s ease-in-out;
         }
@@ -104,6 +101,46 @@
         .wrapper ul li a:hover{
             color: #fff;
         }
+
+
+
+
+        .wrapper ul li button{
+            color: none;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 500;
+            padding: 5px 30px;
+            color: #fff;
+            border-radius: 50px;
+            background: #000;
+            position: relative;
+            line-height: 50px;
+            transition: all 0.3s ease;
+        }
+        .wrapper ul li button:after{
+            position: absolute;
+            content: "";
+            background: #fff;
+            background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+            /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+            width: 104%;
+            height: 110%;
+            left: -2%;
+            top: -5%; /* if the font is 'Oswald'*/
+            border-radius: 50px;
+            transform: scaleY(0);
+            z-index: -1;
+            animation: rotate 1.5s linear infinite;
+            transition: transform 0.3s ease;
+        }
+        .wrapper ul li button:hover:after{
+            transform: scaleY(1);
+        }
+        .wrapper ul li button:hover{
+            color: #fff;
+        }
+
         input[type="checkbox"]{
             display: none;
         }

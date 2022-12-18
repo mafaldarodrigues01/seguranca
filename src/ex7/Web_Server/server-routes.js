@@ -29,8 +29,28 @@ router.get('/tasks-lists', getTasksLists)
 router.get('/tasks-lists/:listId/tasks', getListTasks)
 router.post('/tasks-lists/:listId/tasks', postTask)
 router.get('/tasks-lists/:listId/tasks/:id', getTask)
+router.delete('/tasks-lists/:listId/tasks/:id', deleteTask)
 
 /* ********************************************** Middlewares ********************************************** */
+
+
+function deleteTask(req, resp, next) {
+    return axios.delete
+        (
+            `https://tasks.googleapis.com/tasks/v1/lists/${req.params.listId}/tasks/${req.params.id}`,
+            {
+                params:{
+
+                },
+                headers: {
+                    'Authorization': `Bearer ${req.user.access_token}`
+                }
+            }
+        )
+        .then(() => resp.redirect(`/tasks-lists/${req.params.listId}/tasks`))
+        .catch(next)
+}
+
 
 function checkUserLoggedIn(req, resp, next) {
     if (!req.user) {
@@ -174,6 +194,8 @@ function getListTasks(req, resp, next) {
         .then(list => resp.render('listTasks', { 'user': req.user, 'listId': req.params.listId, 'list': list }))
         .catch(next)
 }
+
+
 
 function postTask(req, resp, next) {
     return axios

@@ -1,6 +1,9 @@
 <head>
-    <style>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
         input[type='radio']:after {
             width: 15px;
             height: 15px;
@@ -30,6 +33,7 @@
         }
 
         .center {
+            max-height: 800px;
             border-collapse: collapse;
             font-size: 0.9em;
             font-family: sans-serif;
@@ -50,42 +54,40 @@
             margin: 4px 2px;
             cursor: pointer;
         }
+        .button {
+            background-color: black;
+            border: 3px solid pink;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
-
 <body>
-
-<table class="center">
-    <tr>
-        <th>Task Name</th>
-        <th>Last Update</th>
-        <th>Done</th>
-        <th>To Do</th>
-    </tr>
-
-    {{#each list}}
+    <table class="center">
         <tr>
-            <td>
-                {{this.title}}
-            </td>
-            <td>
-                {{this.updated}}
-            </td>
-            <td>
-                <input type="radio" id="html" name={{this.updated}} value="HTML">
-            </td>
-            <td>
-                <input type="radio" id="html" name={{this.updated}} value="HTML">
-            </td>
-
+            <th>Task Name</th>
+            <th>Last Update</th>
+            <th>Done</th>
+            <th>To Do</th>
         </tr>
-    {{/each}}
-
-</table>
-<form method="post">
-    <input type="text" placeholder="Task title" name="title">
-    <button type="submit" class = "button">Add Task</button>
-</form>
-</tbody>
-</table>
+        {{#each list}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.updated}}</td>
+                <td><input type="radio" id="html" name={{this.updated}} value="HTML"></td>
+                <td><input type="radio" id="html" name={{this.updated}} value="HTML"></td>
+            </tr>
+        {{/each}}
+    </table>
+    <form method="post">
+        <input type="text" minlength="0" placeholder="Task title" name="title" required>
+        <button type="submit" class = "button">Add Task</button>
+    </form>
 </body>
