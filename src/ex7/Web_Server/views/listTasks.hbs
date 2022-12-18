@@ -1,8 +1,46 @@
 <head>
     <style>
+
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: pink;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        .center {
+            border-collapse: collapse;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin-left: auto;
+            margin-right: auto;
+        }
         .button {
-            background-color: #4CAF50;
-            border: none;
+            background-color: black;
+            border: 3px solid pink;
             color: white;
             padding: 15px 32px;
             text-align: center;
@@ -16,25 +54,38 @@
 </head>
 
 <body>
-    <section>
-        <div id= "list_tasks">
-            <h2>Your Task list</h2>
-            <ul class="check-list">
-                {{#each list}}
-                    <li>
-                        <a href="/tasks-lists/{{@root.listId}}/tasks/{{this.id}}" class = "button">
-                            {{this.title}}
-                        </a>
-                    </li>
-                {{/each}}
-            </ul>
-            <form method="post">
-                <input type="text" placeholder="Task title" name="title">
-                <button type="submit">Add Task</button>
-            </form>
-        </div>
-    </section>
+
+<table class="center">
+    <tr>
+        <th>Task Name</th>
+        <th>Last Update</th>
+        <th>Done</th>
+        <th>To Do</th>
+    </tr>
+
+    {{#each list}}
+        <tr>
+            <td>
+                {{this.title}}
+            </td>
+            <td>
+                {{this.updated}}
+            </td>
+            <td>
+                <input type="radio" id="html" name={{this.updated}} value="HTML">
+            </td>
+            <td>
+                <input type="radio" id="html" name={{this.updated}} value="HTML">
+            </td>
+
+        </tr>
+    {{/each}}
+
+</table>
+<form method="post">
+    <input type="text" placeholder="Task title" name="title">
+    <button type="submit" class = "button">Add Task</button>
+</form>
+</tbody>
+</table>
 </body>
-
-
-
