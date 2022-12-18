@@ -1,132 +1,40 @@
 <head>
     <style>
-        nav {
-            margin: 27px auto 0;
-
-            position: relative;
-            width: 590px;
-            height: 50px;
-            background-color: #34495e;
-            border-radius: 8px;
-            font-size: 0;
-        }
-        nav a {
-            line-height: 50px;
-            height: 100%;
-            font-size: 15px;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            text-decoration: none;
-            text-transform: uppercase;
-            text-align: center;
+        .button {
+            background-color: #4CAF50;
+            border: none;
             color: white;
-            cursor: pointer;
-        }
-        nav .animation {
-            position: absolute;
-            height: 100%;
-            top: 0;
-            z-index: 0;
-            transition: all .5s ease 0s;
-            border-radius: 8px;
-        }
-        a:nth-child(1) {
-            width: 100px;
-        }
-        a:nth-child(2) {
-            width: 110px;
-        }
-        a:nth-child(3) {
-            width: 100px;
-        }
-        a:nth-child(4) {
-            width: 160px;
-        }
-        a:nth-child(5) {
-            width: 120px;
-        }
-        nav .start-home, a:nth-child(1):hover~.animation {
-            width: 100px;
-            left: 0;
-            background-color: #1abc9c;
-        }
-        nav .start-about, a:nth-child(2):hover~.animation {
-            width: 110px;
-            left: 100px;
-            background-color: #e74c3c;
-        }
-        nav .start-blog, a:nth-child(3):hover~.animation {
-            width: 100px;
-            left: 210px;
-            background-color: #3498db;
-        }
-        nav .start-portefolio, a:nth-child(4):hover~.animation {
-            width: 160px;
-            left: 310px;
-            background-color: #9b59b6;
-        }
-        nav .start-contact, a:nth-child(5):hover~.animation {
-            width: 120px;
-            left: 470px;
-            background-color: #e67e22;
-        }
-
-        body {
-            font-size: 12px;
-            font-family: sans-serif;
-            background: #2c3e50;
-        }
-        h1 {
+            padding: 15px 32px;
             text-align: center;
-            margin: 40px 0 40px;
-            text-align: center;
-            font-size: 30px;
-            color: #ecf0f1;
-            text-shadow: 2px 2px 4px #000000;
-            font-family: 'Cherry Swash', cursive;
-        }
-
-        p {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            color: #ecf0f1;
-            font-family: 'Cherry Swash',cursive;
+            text-decoration: none;
+            display: inline-block;
             font-size: 16px;
-        }
-
-        span {
-            color: #2BD6B4;
+            margin: 4px 2px;
+            cursor: pointer;
         }
     </style>
 </head>
 
+<body>
+    <section>
+        <div id= "list_tasks">
+            <h2>Your Task list</h2>
+            <ul class="check-list">
+                {{#each list}}
+                    <li>
+                        <a href="/tasks-lists/{{@root.listId}}/tasks/{{this.id}}" class = "button">
+                            {{this.title}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+            <form method="post">
+                <input type="text" placeholder="Task title" name="title">
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </section>
+</body>
 
-<h1 class="ui inverted header">
-    List Tasks
-</h1>
-<table class="ui celled table">
-    <thead>
-        <tr>
-            <th>Tasks</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each list}}
-        <tr>
-            <td data-label="Tasks">
-                <a href="/tasks-lists/{{@root.listId}}/tasks/{{this.id}}">{{this.title}}</a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<form method="post">
-    <div class="ui action input">
-        <input type="text" placeholder="Task title" name="title">
-        <button class="ui positive button" type="submit">Add Task</button>
-    </div>
-</form>
-</div>
+
+

@@ -1,20 +1,33 @@
-<h1 class="ui inverted header">
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+
+
+<h1>
     Tasks Lists
 </h1>
-<table class="ui celled table">
-    <thead>
-        <tr>
-            <th>Tasks Lists</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each items}}
-        <tr>
-            <td data-label="Tasks List">
-                <a href="/tasks-lists/{{this.id}}/tasks">{{this.title}}</a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-</div>
+
+{{#each items}}
+    <tr>
+        <th>
+            <a href="/tasks-lists/{{this.id}}/tasks" class = "button">
+                {{this.title}}
+
+            </a>
+        </th>
+    </tr>
+{{/each}}
