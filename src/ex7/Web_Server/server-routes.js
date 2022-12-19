@@ -82,7 +82,6 @@ function getHome(req, resp) {
         return resp.render('home')
 }
 
-/* ********************************************** Endpoint Functions ********************************************** */
 
 function getGoogleLogin(req, resp) {
     const state = crypto.randomUUID()
