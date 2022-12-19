@@ -13,7 +13,7 @@ app.get("/", function (req, res) {
        // res.send("<html><body>Connection without authorization</body></html>");
     } else {
         console.log('Without Authentication');
-       // res.send("<html><body>Connection with authorization</body></html>");
+       res.send("<html><body>Connection with authorization</body></html>");
     }
 });
 
