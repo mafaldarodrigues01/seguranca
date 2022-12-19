@@ -7,6 +7,7 @@ const { newEnforcer } = require('casbin');
 const crypto = require('crypto')
 
 const service = require('./server-service')
+const {render} = require("express/lib/application");
 
 /* ********************************************** System Variables ********************************************** */
 
@@ -54,15 +55,12 @@ function deleteTask(req, resp, next) {
 
 function checkUserLoggedIn(req, resp, next) {
     if (!req.user) {
-        return resp
-            .status(401)
-            .redirect('/')
+        return resp.render('errors',{'error':'LogIn'})
     }
-
     next()
 }
 
-async function checkRole(req, resp, next) {
+async function checkRole(req, resp,next) {
     const enforcer = await newEnforcer('./role-policy/model.conf', './role-policy/policy.csv')
 
     const sub = req.user.email // the user that wants to access a resource.
@@ -72,10 +70,11 @@ async function checkRole(req, resp, next) {
     const enforceResult = await enforcer.enforce(sub, obj, act)
 
     if (!enforceResult) {
-        return resp.status(401).send()
+        return resp.render('errors',{'error' : 'Permission'})
     }
 
     next()
+
 }
 
 function getHome(req, resp) {
@@ -104,7 +103,7 @@ function getGoogleLogin(req, resp) {
             // scope "openid email"
             + 'scope=openid%20email%20https://www.googleapis.com/auth/tasks&'
 
-            // parameter state is used to check if the user's requesting login 
+            // parameter state is used to check if the user's requesting login
             // is the same making the request to the callback URL
             + `state=${state}&`
 
