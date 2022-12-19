@@ -1,4 +1,4 @@
-import java.io.FileInputStream;
+/*import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.*;
@@ -37,10 +37,10 @@ public class question6 {
 
 
             // Obtém a chave pública do certificado.
-            PublicKey publicKey = certificate.getPublicKey();
+      /*      PublicKey publicKey = certificate.getPublicKey();*/
 
 
-            //ficheiro
+    /*        //ficheiro
             FileInputStream inFile = new FileInputStream(file);
             Base64InputStream inBase = new Base64InputStream(inFile);
 
@@ -115,10 +115,10 @@ public class question6 {
 
     /* Imprime array de bytes em hexadecimal */
 
-    private static void prettyPrint(byte[] tag) {
+/*    private static void prettyPrint(byte[] tag) {
         for (byte b: tag) {
             System.out.printf("%02x", b);
         }
         System.out.println();
     }
-}
+}*/
