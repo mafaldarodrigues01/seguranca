@@ -1,29 +1,27 @@
-/* ********************************************** Requires ********************************************** */
 
 const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const axios = require('axios').default
 const { newEnforcer } = require('casbin');
 const crypto = require('crypto')
-
 const service = require('./server-service')
-const {render} = require("express/lib/application");
 
-/* ********************************************** System Variables ********************************************** */
 
-const CLIENT_ID = '765346635519-mbtls2dg5hjuuki1k3c6n6t2ossfl25n.apps.googleusercontent.com'
-const CLIENT_SECRET = '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'
+
+
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
 const CALLBACK = 'callback'
 
 
 
-/* ********************************************** Endpoints Setup ********************************************** */
 
 router.get('/', getHome)
 router.get('/' + CALLBACK, getCallback)
 router.get('/login', getHome)
 router.get('/google-login', getGoogleLogin)
 router.post('/logout', postLogout)
+
 router.use('/tasks-lists', checkUserLoggedIn)
 router.use('/tasks-lists', checkRole)
 router.get('/tasks-lists', getTasksLists)
@@ -32,7 +30,6 @@ router.post('/tasks-lists/:listId/tasks', postTask)
 router.get('/tasks-lists/:listId/tasks/:id', getTask)
 router.delete('/tasks-lists/:listId/tasks/:id', deleteTask)
 
-/* ********************************************** Middlewares ********************************************** */
 
 
 function deleteTask(req, resp, next) {
