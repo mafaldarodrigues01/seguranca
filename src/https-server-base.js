@@ -20,7 +20,7 @@ const options = {
     key: fs.readFileSync('secure-server-pfx.pem'),
     cert: fs.readFileSync('secure-server-cer.pem'), // CA1-int.cer
     ca: fs.readFileSync('Alice_2.cer'),
-    requestCert: true,  // false -> no auth, true -> auth
+    requestCert: false,  // false -> no auth, true -> auth
     rejectUnauthorized: false
 };
 

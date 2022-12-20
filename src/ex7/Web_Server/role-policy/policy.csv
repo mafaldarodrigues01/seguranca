@@ -3,12 +3,14 @@ p, free, /tasks-lists/:listId/tasks, GET
 p, free, /tasks-lists/:listId/tasks/:id, GET
 
 p, premium, /tasks-lists/:listId/tasks, POST
-p, premium, /tasks-lists/:listId/tasks, DELETE
+
+premium,,,,,inheritsFrom=free
+admin,,,,,inheritsFrom=premium
 
 
 g, premium, free
 g, admin, premium
-
 g, rodrigo.rodes@gmail.com, admin
+g, mafaldarodrigues1506@gmail.com, admin
 g, rodrigofneves2000@gmail.com, premium
 g, battleshipapp7@gmail.com, premium

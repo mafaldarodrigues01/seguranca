@@ -34,17 +34,17 @@ router.delete('/tasks-lists/:listId/tasks/:id', deleteTask)
 
 function deleteTask(req, resp, next) {
     return axios.delete
-        (
-            `https://tasks.googleapis.com/tasks/v1/lists/${req.params.listId}/tasks/${req.params.id}`,
-            {
-                params:{
+    (
+        `https://tasks.googleapis.com/tasks/v1/lists/${req.params.listId}/tasks/${req.params.id}`,
+        {
+            params:{
 
-                },
-                headers: {
-                    'Authorization': `Bearer ${req.user.access_token}`
-                }
+            },
+            headers: {
+                'Authorization': `Bearer ${req.user.access_token}`
             }
-        )
+        }
+    )
         .then(() => resp.redirect(`/tasks-lists/${req.params.listId}/tasks`))
         .catch(next)
 }
@@ -58,7 +58,7 @@ function checkUserLoggedIn(req, resp, next) {
 }
 
 async function checkRole(req, resp,next) {
-    const enforcer = await newEnforcer('./ex7.Web_Server.role-policy/model.conf', './ex7.Web_Server.role-policy/policy.csv')
+    const enforcer = await newEnforcer('./role-policy/model.conf', './role-policy/policy.csv')
 
     const sub = req.user.email // the user that wants to access a resource.
     const obj = req.originalUrl // the resource that is going to be accessed.
