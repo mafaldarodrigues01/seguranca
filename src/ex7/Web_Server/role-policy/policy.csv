@@ -4,9 +4,6 @@ p, free, /tasks-lists/:listId/tasks/:id, GET
 
 p, premium, /tasks-lists/:listId/tasks, POST
 
-premium,,,,,inheritsFrom=free
-admin,,,,,inheritsFrom=premium
-
 
 g, premium, free
 g, admin, premium
